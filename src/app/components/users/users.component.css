@@ -2,7 +2,6 @@
   position: fixed;
   background-color: #fff;
   z-index: 4;
-  width: 40rem;
   height: 40rem;
   left: 50%;
   top: 50%;
@@ -15,7 +14,6 @@
 .agregarUsuarioModel {
   position: relative;
   top: 2rem;
-  width: 20rem;
   margin: 1rem;
 }
 
@@ -55,14 +53,13 @@
 }
 
 .infoBasica {
-  margin: 1rem;
   margin-left: 3.5rem;
 }
 
 .inputModal {
   border: none;
   display: inline-block;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.4rem;
   margin: 0.5rem;
   background-color: #f1f1f1;
 }
@@ -77,6 +74,7 @@
 .imgTextIconModel {
   position: relative;
   display: inline-block;
+  margin-left: 0.4rem;
 }
 
 .imgText {

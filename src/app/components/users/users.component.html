@@ -16,20 +16,6 @@
     <p class="infoBasica">
       Informacion Basica
     </p>
-    <input
-      ngModel
-      name="nombrePersona"
-      [(ngModel)]="modalObj.nomP"
-      placeholder="nombre"
-      class="inputModal"
-    />
-    <input
-      ngModel
-      name="apellidoP"
-      [(ngModel)]="modalObj.apelP"
-      placeholder="apellido paterno"
-      class="inputModal"
-    />
     <p class="imgTextIconModel">Activo</p>
     <img
       value="false"
@@ -46,6 +32,20 @@
       src="./assets/img/toggle_on.svg"
     />
     <p class="imgTextIconModel">Inactivo</p>
+    <input
+      ngModel
+      name="nombrePersona"
+      [(ngModel)]="modalObj.nomP"
+      placeholder="nombre"
+      class="inputModal"
+    />
+    <input
+      ngModel
+      name="apellidoP"
+      [(ngModel)]="modalObj.apelP"
+      placeholder="apellido paterno"
+      class="inputModal"
+    />
     <input
       ngModel
       name="apellidoM"

@@ -124,7 +124,7 @@ export class UsuariosService {
         roleId: parseInt(forma.admin),
         active: forma.modalImage,
       };
-      this.usuarios.push(newO);
+      this.usuarios.unshift(newO);
     } else {
       for (let nameArr of this.sortedUsuarios) {
         if (nameArr.name === ob.name) {
@@ -135,7 +135,7 @@ export class UsuariosService {
           nameArr.email = forma.emailPersona;
           nameArr.roleId = parseInt(forma.admin);
           nameArr.active = forma.admin;
-          this.sortedUsuarios.push(nameArr);
+          this.sortedUsuarios.unshift(nameArr);
           let index = this.sortedUsuarios.indexOf(nameArr);
           this.sortedUsuarios.splice(index, 1);
         }
