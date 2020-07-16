@@ -1,0 +1,240 @@
+<div *ngIf="vistaModal" class="modalContainer">
+  <h2 class="agregarUsuarioModel">Agregar Usuario</h2>
+  <p class="nameModal">Foto perfil</p>
+
+  <form autocomplete="off" (ngSubmit)="guardar(forma)" #forma="ngForm">
+    <img class="imgModal" [src]="imgPrev" />
+    <p class="imgText">JPG, PNG | Tamaño minimo de 300px x 300px</p>
+    <input
+      class="inputContainerUp"
+      type="text"
+      [(ngModel)]="imgPrev"
+      placeholder="Coloca el URL de tu imagen"
+      ngModel
+      name="url"
+    />
+    <p class="infoBasica">
+      Informacion Basica
+    </p>
+    <input
+      ngModel
+      name="nombrePersona"
+      [(ngModel)]="nomP"
+      placeholder="nombre"
+      class="inputModal"
+    />
+    <input
+      ngModel
+      name="apellidoP"
+      [(ngModel)]="apelP"
+      placeholder="apellido paterno"
+      class="inputModal"
+    />
+    <p class="imgTextIconModel">Activo</p>
+    <img
+      value="false"
+      (click)="modalImage = true"
+      *ngIf="!modalImage"
+      class="imgIconModel"
+      src="./assets/img/toggle_off.svg"
+    />
+    <img
+      value="true"
+      (click)="modalImage = false"
+      *ngIf="modalImage"
+      class="imgIconModel"
+      src="./assets/img/toggle_on.svg"
+    />
+    <p class="imgTextIconModel">Inactivo</p>
+    <input
+      ngModel
+      name="apellidoM"
+      [(ngModel)]="apelM"
+      placeholder="apellido materno"
+      class="inputModal"
+    />
+    <input
+      ngModel
+      name="emailPersona"
+      [(ngModel)]="mailM"
+      placeholder="email"
+      class="inputModal"
+    />
+
+    <select ngModel name="admin" [(ngModel)]="rolM" class="inputModal">
+      <option value="2" selected>Administrador</option>
+      <option value="1">Dueño</option>
+      <option value="3">Staff</option>
+    </select>
+
+    <hr />
+    <button class="btnModal" (click)="cancelarModal()">Cancelar</button>
+    <button class="btnModal" type="submit">Guardar Usuario</button>
+  </form>
+</div>
+<div class="container">
+  <div class="containerNew">
+    <div class="containerTextContainerNew">
+      <h1 class="h1ContainerNew">Usuarios</h1>
+      <p class="pContainerNew">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi et harum
+        pariatur repellat natus, recusandae quo? Nihil delectus tempore nemo
+        tenetur fugiat laborum id, unde suscipit itaque cum voluptatum
+        voluptate.
+      </p>
+    </div>
+    <div class="containerBtnContainerNew">
+      <button
+        (click)="nuevoUsuario({}, 'nuevoUsuario')"
+        class="btnContainerNew"
+      >
+        Agregar nuevo usuario
+      </button>
+    </div>
+  </div>
+  <div class="containerUp">
+    <input
+      class="inputContainerUp"
+      type="text"
+      placeholder="Buscar"
+      #busquedaUsuarios
+      (keyup)="buscarUsuarios(busquedaUsuarios.value)"
+    />
+
+    <select
+      class="selectContainerUp"
+      name="select"
+      (change)="pagination(selectNumber.value, 0)"
+      #selectNumber
+    >
+      <option value="todos" selected>Todos por pagina</option>
+      <option value="8">8 por pagina</option>
+      <option value="7">7 por pagina</option>
+      <option value="6">6 por pagina</option>
+      <option value="5">5 por pagina</option>
+      <option value="4">4 por pagina</option>
+      <option value="3">3 por pagina</option>
+      <option value="2">2 por pagina</option>
+      <option value="1">1 por pagina</option>
+    </select>
+    <select
+      class="selectContainerUp"
+      name="select"
+      (change)="ordernarUsuarios(selectOrderName.value, 'name')"
+      #selectOrderName
+    >
+      <option value="" selected disabled>Ordenar Nombres</option>
+      <option value="az">Ordenar A-Z</option>
+      <option value="za">Ordenar Z-A</option>
+    </select>
+    <select
+      class="selectContainerUp"
+      name="select"
+      (change)="ordernarUsuarios(selectOrder.value, 'active')"
+      #selectOrder
+    >
+      <option value="" selected disabled>Ordenar por status</option>
+      <option value="active">Active</option>
+      <option value="disabled">Disabled</option>
+    </select>
+    <button (click)="this.vista = false" class="buttonContainerUp">
+      <img src="./assets/img/list.svg" />
+    </button>
+    <button (click)="this.vista = true" class="buttonContainerUp">
+      <img src="./assets/img/square.svg" />
+    </button>
+  </div>
+  <div *ngIf="vista" class="containerDown">
+    <div *ngFor="let usuario of sortedUsuarios" class="card">
+      <div class="containerCard">
+        <img class="cardImage" [src]="usuario.picture" />
+        <p class="textoCard">{{ usuario.name }}</p>
+        <p class="textoCard">{{ usuario.email | recortar }}</p>
+        <p class="textoCard">{{ usuario.roleId | rol }}</p>
+        <hr />
+        <td *ngIf="usuario.active" class="trCells">
+          <img
+            (click)="cambiarStatus(usuario.name)"
+            src="./assets/img/toggle_on.svg"
+          />
+        </td>
+        <td *ngIf="!usuario.active" class="trCells">
+          <img
+            (click)="cambiarStatus(usuario.name)"
+            src="./assets/img/toggle_off.svg"
+          />
+        </td>
+        <button
+          (click)="nuevoUsuario(usuario, 'modificar')"
+          class="btnTdModCard"
+        >
+          <img src="./assets/img/web.svg" />
+        </button>
+        <button (click)="eliminarUsuario(usuario.name)" class="btnTdEliCard">
+          <img src="./assets/img/trash.svg" />
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!vista" class="containerDown">
+    <table class="table">
+      <thead class="thTable">
+        <th class="thCells">Foto</th>
+        <th class="thCells">Nombre</th>
+        <th class="thCells">Apellido paterno</th>
+        <th class="thCells">Apellido Materno</th>
+        <th class="thCells">Correo</th>
+        <th class="thCells">Rol</th>
+        <th class="thCells">Status</th>
+        <th class="thCells">Modificar</th>
+        <th class="thCells">Eliminar</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of sortedUsuarios" class="trTable">
+          <td class="trCells">
+            <img class="imgTable" [src]="usuario.picture" />
+          </td>
+          <td class="trCells">{{ usuario.name }}</td>
+          <td class="trCells">{{ usuario.fathersLastName }}</td>
+          <td class="trCells">{{ usuario.mothersLastName }}</td>
+          <td class="trCells">{{ usuario.email | recortar }}</td>
+          <td class="trCells">{{ usuario.roleId | rol }}</td>
+          <td *ngIf="usuario.active" class="trCells">
+            <img
+              (click)="cambiarStatus(usuario.name)"
+              src="./assets/img/toggle_on.svg"
+            />
+          </td>
+          <td *ngIf="!usuario.active" class="trCells">
+            <img
+              (click)="cambiarStatus(usuario.name)"
+              src="./assets/img/toggle_off.svg"
+            />
+          </td>
+          <td>
+            <button
+              (click)="nuevoUsuario(usuario, 'modificar')"
+              class="btnTdMod"
+            >
+              <img src="./assets/img/web.svg" />
+            </button>
+          </td>
+          <td>
+            <button (click)="eliminarUsuario(usuario.name)" class="btnTdEli">
+              <img src="./assets/img/trash.svg" />
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="containerBtnPaginaation">
+    <button
+      *ngFor="let numeroDePagina of numberPages"
+      (click)="pagination(selectNumber.value, numeroDePagina.page)"
+      class="btnPagination"
+    >
+      {{ numeroDePagina.page + 1 }}
+    </button>
+  </div>
+</div>

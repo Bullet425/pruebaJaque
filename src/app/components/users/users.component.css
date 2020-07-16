@@ -1,0 +1,295 @@
+.modalContainer {
+  position: fixed;
+  background-color: #fff;
+  z-index: 4;
+  width: 40rem;
+  height: 40rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 5px 4px 4px #333;
+  border-radius: 1rem;
+  border: solid #333 0.1rem;
+}
+
+.agregarUsuarioModel {
+  position: relative;
+  top: 2rem;
+  width: 20rem;
+  margin: 1rem;
+}
+
+.btnModal {
+  position: relative;
+  margin: 0 1rem;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.btnModal:hover {
+  background-color: #dfdfdf;
+}
+
+.nameModal {
+  position: relative;
+  top: 2.5rem;
+  margin-left: 5rem;
+}
+
+.imgModal {
+  position: relative;
+  top: 2rem;
+  left: 2rem;
+  height: 10rem;
+  width: 10rem;
+}
+
+.fileImageBtn {
+  border-radius: 0.2rem;
+  border: none;
+  margin: 1rem;
+  padding: 0.7rem 1rem;
+  width: 100rem;
+  background-color: #f1f1f1;
+}
+
+.infoBasica {
+  margin: 1rem;
+  margin-left: 3.5rem;
+}
+
+.inputModal {
+  border: none;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  background-color: #f1f1f1;
+}
+
+.imgIconModel {
+  margin: 0 1rem;
+  top: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.imgTextIconModel {
+  position: relative;
+  display: inline-block;
+}
+
+.imgText {
+  position: relative;
+  margin-left: 15rem;
+  top: -5rem;
+}
+
+.containerNew {
+  position: relative;
+  width: 100%;
+  height: 10rem;
+  background-color: #fff;
+}
+
+.containerTextContainerNew,
+.containerBtnContainerNew {
+  width: 50%;
+  display: inline-block;
+}
+
+.containerBtnContainerNew {
+  top: -2rem;
+}
+
+.h1ContainerNew,
+.pContainerNew {
+  position: relative;
+  padding: 0 2rem;
+}
+
+.pContainerNew {
+  top: -1rem;
+}
+
+.btnContainerNew {
+  width: 40%;
+  display: inline-block;
+  position: relative;
+  margin: 0.4rem;
+  padding: 1rem;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -100%);
+  cursor: pointer;
+}
+
+.container {
+  margin: 5rem;
+  position: relative;
+}
+
+.containerDown,
+.containerUp {
+  background-color: #fff;
+  width: 100%;
+  height: auto;
+}
+
+.containerUp {
+  height: 5rem;
+  margin: 0.4rem 0;
+}
+
+.inputContainerUp {
+  border-radius: 0.2rem;
+  border: none;
+  margin: 1rem;
+  padding: 0.7rem 1rem;
+  background-color: #f1f1f1;
+}
+
+.selectContainerUp {
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.buttonContainerUp {
+  border: none;
+  padding: 0.5rem;
+  font-size: 0.2rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  top: 0.5rem;
+  position: relative;
+  background-color: transparent;
+}
+
+.table {
+  position: relative;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.thTable {
+  background-color: #ededed;
+  border: #fff solid 0.5rem;
+}
+
+.thCells {
+  padding: 0.5rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.trTable {
+  background-color: #dfdfdf;
+  border: #fff solid 0.5rem;
+  box-sizing: border-box;
+}
+
+.trTable:hover {
+  opacity: 0.8;
+}
+
+.trCells {
+  padding: 0.5rem;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+.imgTable {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
+}
+
+.btnTdMod,
+.btnTdEli {
+  border: none;
+  border-radius: 0.2rem;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.card {
+  background-color: #dfdfdf;
+  width: 15rem;
+  height: 20rem;
+  left: 12%;
+  transform: translateX(-50%);
+  position: relative;
+  margin: 0.5rem 2rem;
+  display: inline-block;
+}
+
+.containerCard {
+  top: 10%;
+  position: relative;
+}
+
+.cardImage {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+}
+
+.textoCard {
+  text-align: center;
+}
+
+.btnStatusCard {
+  border: none;
+  background-color: #6360ea;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  color: #fff;
+  cursor: pointer;
+  margin: 0 0.4rem;
+}
+
+.btnTdModCard,
+.btnTdEliCard {
+  border: none;
+  background-color: transparent;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  color: #fff;
+  cursor: pointer;
+  margin: 0 0.4rem;
+  position: absolute;
+  right: 3rem;
+  top: 85%;
+}
+
+.btnTdEliCard {
+  right: 0;
+}
+
+.btnPagination {
+  border: none;
+  background-color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1rem;
+  display: inline-block;
+  position: relative;
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
+
+.btnPagination:hover {
+  background-color: #dbdbdb;
+}
