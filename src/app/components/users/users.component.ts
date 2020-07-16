@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { UsuariosService } from "src/app/services/usuarios.service";
 
 @Component({
@@ -6,32 +6,31 @@ import { UsuariosService } from "src/app/services/usuarios.service";
   templateUrl: "./users.component.html",
   styleUrls: ["./users.component.css"],
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent {
   usuarios = [];
-  roles = [];
   numberPages = [];
   sortedUsuarios = [];
   currentOb = {};
-  vista = false;
-  vistaModal = false;
-  modalImage = false;
+  modalObj = {
+    imgPrev:
+      "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg",
+    nomP: "",
+    apelP: "",
+    apelM: "",
+    mailM: "",
+    staM: "",
+    rolM: "",
+  };
+  vista: Boolean = false;
+  vistaModal: Boolean = false;
+  modalImage: Boolean = false;
+  modalType: String = "";
   page = 1;
-  modalType = "";
-  imgPrev =
-    "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
-  nomP;
-  apelP;
-  apelM;
-  mailM;
-  staM;
-  rolM;
 
   constructor(private usuariosService: UsuariosService) {
     this.usuarios = this.usuariosService.getUsuarios();
     this.sortedUsuarios = this.usuariosService.getUsuarios();
   }
-
-  ngOnInit() {}
 
   buscarUsuarios(termino) {
     this.sortedUsuarios = this.usuariosService.buscarUsuarios(termino);
@@ -46,22 +45,22 @@ export class UsersComponent implements OnInit {
     this.numberPages = this.usuariosService.getNumberPages();
   }
 
-  cambiarStatus(name) {
+  cambiarStatus(name: String) {
     this.usuariosService.cambiarStatus(name);
   }
 
-  nuevoUsuario(ob, type) {
-    this.imgPrev = ob.picture;
-    if (!this.imgPrev) {
-      this.imgPrev =
+  nuevoUsuario(ob, type: String) {
+    this.modalObj.imgPrev = ob.picture;
+    if (!this.modalObj.imgPrev) {
+      this.modalObj.imgPrev =
         "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
     }
-    this.nomP = ob.name;
-    this.apelP = ob.fathersLastName;
-    this.apelM = ob.mothersLastName;
-    this.mailM = ob.email;
-    this.staM = ob.active;
-    this.rolM = ob.roleId;
+    this.modalObj.nomP = ob.name;
+    this.modalObj.apelP = ob.fathersLastName;
+    this.modalObj.apelM = ob.mothersLastName;
+    this.modalObj.mailM = ob.email;
+    this.modalObj.staM = ob.active;
+    this.modalObj.rolM = ob.roleId;
     this.vistaModal = true;
     this.modalType = type;
     this.currentOb = ob;
@@ -73,7 +72,7 @@ export class UsersComponent implements OnInit {
 
   cancelarModal() {
     this.vistaModal = false;
-    this.imgPrev =
+    this.modalObj.imgPrev =
       "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
   }
 
